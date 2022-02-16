@@ -3,6 +3,9 @@ import './App.css';
 import Header from './components/Header';
 import Card from './components/Card'
 import axios from 'axios';
+import Forecast from './components/Forecast'
+
+
 
 //`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`
 
@@ -37,30 +40,32 @@ function App() {
       setSunset(weatherData.data.current.sunset)
       setSunrise(weatherData.data.current.sunrise)
       setHumidity(weatherData.data.current.humidity)
-      //setCity(weatherData.data.timezone)
-      //setIcon(weatherData.data.current.weather[0].main)
-      //setForecast(weatherData.data.daily)
+      setCity(weatherData.data.timezone)
+      setIcon(weatherData.data.current.weather[0].main)
+      setForecast(weatherData.data.daily)
     })
 
   }, [latitude, longitude])
   return (
     <div className="App">
-      <Header />
-      Welcome to the Weather App! Enter your city to get the weather and plan your day accordingly.
 
+      <div className="big-container">
+      <Header />
+      <p className="welcome-text">
+      Welcome to the Weather App! Turn on your location to get the weather and plan your day accordingly.
+      </p>
       
       <div class="shadow-lg p-3 mb-5 bg-white rounded container">
-      
         <Card 
           temperature={temperature}
           humidity={humidity}
           sunrise={sunrise}
           sunset={sunset}
           city={city}
-          icon={icon}
-
-        
+          icon={icon}        
         />
+      </div>
+      <Forecast forecast={forecast}/>
       </div>        
     </div>
   );
