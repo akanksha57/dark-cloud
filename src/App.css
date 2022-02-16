@@ -1,6 +1,31 @@
 .App {
   display: flex;
   padding:25px;
+  flex-direction: column;
+  background-color: #79B4B7;
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+  color: #152D35;
+  margin: auto;
+
+}
+
+.header{
+  font-size:30px;
+  padding-bottom: 40px;
+  font-weight: bold;
+}
+
+.container{
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  border-color: #112031;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 10px;
+  padding:20px;
 }
 
 .input {
@@ -9,11 +34,24 @@
   margin:auto; 
   border:1px solid lightgray;
   border-radius: 6px;
-  font-size: 16px;;
+  font-size: 16px;
+  background-color: #D4ECDD;
+  margin-bottom: 15px;  
 }
 
 .input:focus {
   outline:none;
+}
+
+.weather-card{
+  display:flex;
+  flex-direction: row;
+  justify-content:space-between;
+  
+}
+
+.weather-card-child{
+  padding:15px;
 }
 
 .weather-data {
