@@ -1,54 +1,67 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
+import Header from './components/Header';
+import Card from './components/Card'
+import axios from 'axios';
+
 //`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`
 
 function App() {
 
+  const URL = `https://api.openweathermap.org/data/2.5/onecall`;
   const apiKey = '8b180de800cdfafad683d0c0a039241b'
-  const [weatherData, setWeatherData] = useState([{}])
-  const [city, setCity] = useState('')
+  const [latitude, setLatitude] = useState(null)
+  const [longitude, setLongitude] = useState(null)
+  const [city, setCity] = useState('');
+  const [temperature, setTemperature] = useState(null);
+  const [humidity, setHumidity] = useState(null);
+  const [sunrise, setSunrise] = useState(null);
+  const [sunset, setSunset] = useState(null);
+  const [icon, setIcon] = useState('');
+  const [forecast, setForecast] = useState([]);
+  const [loading, setloading] = useState(true); 
 
-  const getWeather = (event) => {
-    console.log(weatherData)
-      if(event.key === "Enter") {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?id=6167865&appid=${apiKey}`).then(
-              data=> {
-                setWeatherData(data)
-                setCity('')
-              }
-        )
-      }
-  } 
+  useEffect(()=> {
+
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setLatitude(position.coords.latitude);
+      setLongitude(position.coords.longitude); 
+      // console.log("Latitude: ", position.coords.latitude)
+      // console.log("Longtitude: ", position.coords.longitude)
+    });
+    
+    axios.get(`${URL}?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&appid=${apiKey}&units=metric`).then((weatherData) => {
+      console.log(weatherData.data);
+      //setloading(false)
+      setTemperature(weatherData.data.current.temp);
+      setSunset(weatherData.data.current.sunset)
+      setSunrise(weatherData.data.current.sunrise)
+      setHumidity(weatherData.data.current.humidity)
+      //setCity(weatherData.data.timezone)
+      //setIcon(weatherData.data.current.weather[0].main)
+      //setForecast(weatherData.data.daily)
+    })
+
+  }, [latitude, longitude])
   return (
     <div className="App">
-      <input 
-        className="input" 
-        type="text" 
-        placeholder="Enter Your City"
-        onChange={e =>setCity(e.target.value)}
-        value={city} 
-        onKeyPress={getWeather}
-        />
-        <br></br> 
-        
-        {typeof weatherData.main === 'undefined'? (
-          <div>
-            <p>Welcome to the Weather App! Enter your city to get the weather and plan your day accordingly.</p>
-          </div>
-        ): (
-          <div  className="weather-data">
-            <p className="city">{weatherData.name}</p>
-            <p className="temp">{Math.round(weatherData.main.temp)}°C</p>
-            <p className="weather">{weatherData[0].main}</p>
-          </div>
-        )}
+      <Header />
+      Welcome to the Weather App! Enter your city to get the weather and plan your day accordingly.
 
-        {weatherData.cod === "404"? (
-          <p>City not found!</p>
-        ) : (
-          <div></div>
-        )
-      }
+      
+      <div class="shadow-lg p-3 mb-5 bg-white rounded container">
+      
+        <Card 
+          temperature={temperature}
+          humidity={humidity}
+          sunrise={sunrise}
+          sunset={sunset}
+          city={city}
+          icon={icon}
+
+        
+        />
+      </div>        
     </div>
   );
 }
