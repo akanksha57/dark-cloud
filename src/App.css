@@ -1,53 +1,47 @@
-.App {
-  display: flex;
-  padding:25px;
+
+body{
+  background-color: #000;
+  justify-content: center;
+  color: #fff;
+  background-image: url(./components/cloud.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Akaya Telivigala', cursive;
+  text-align: center;
+  
+}
+.App {  
+  padding:10px;
   flex-direction: column;
-  background-color: #79B4B7;
-  width: 70%;
+  width: 45%;
+  align-items: center;
+  margin: auto;
+}
+
+.big-container{
   justify-content: center;
   align-items: center;
-  color: #152D35;
-  margin: auto;
-
 }
 
 .header{
   font-size:30px;
-  padding-bottom: 40px;
+  padding-bottom: 22px;
   font-weight: bold;
 }
 
 .container{
-  z-index: 10;
-  justify-content: center;
-  align-items: center;
-  border-color: #112031;
+  border-color: #fff;
   border-width: 4px;
   border-style: solid;
   border-radius: 10px;
-  padding:20px;
-}
-
-.input {
   padding:10px;
-  width:75%;
-  margin:auto; 
-  border:1px solid lightgray;
-  border-radius: 6px;
-  font-size: 16px;
-  background-color: #D4ECDD;
-  margin-bottom: 15px;  
-}
-
-.input:focus {
-  outline:none;
+  background-color:#000; 
 }
 
 .weather-card{
   display:flex;
   flex-direction: row;
-  justify-content:space-between;
-  
+  justify-content:space-between;  
 }
 
 .weather-card-child{
@@ -66,6 +60,18 @@
   font-weight: 200;
 }
 
+.city-header{
+  border-bottom: 1px solid #fff;
+  width: 100%;
+}
+
+.icon-container{  
+  right:-80;
+  margin-left:-200px;
+  margin-top: 18px;
+}
+
+
 .temp {
   font-size: 90px;
   padding:10px;
@@ -76,4 +82,38 @@
 .weather{
   font-size:30px;
   font-weight: 200;
+}
+
+.forecast-container{
+  width:50%;
+  justify-content:center;
+  width:50%;
+}
+
+.temp-desc{
+  text-transform: capitalize;
+}
+
+.forecast-card{
+  border-color: #fff;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 10px;
+  margin-bottom:10px;
+  padding:10px;
+  background-color:#000;  
+
+}
+
+.forecast-main-header{
+  margin: 20px;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.forecast-date{
+  font-size: 15px; 
+  margin-bottom: 20px;
+  border-bottom: 1px solid #fff;
+
 }
