@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.7a752b62.css",
-    "main.js": "/static/js/main.1572fd82.js",
-    "static/js/787.ce35af3e.chunk.js": "/static/js/787.ce35af3e.chunk.js",
-    "static/media/cloud.jpg": "/static/media/cloud.d3343ac1800d61e61f16.jpg",
-    "index.html": "/index.html",
-    "main.7a752b62.css.map": "/static/css/main.7a752b62.css.map",
-    "main.1572fd82.js.map": "/static/js/main.1572fd82.js.map",
-    "787.ce35af3e.chunk.js.map": "/static/js/787.ce35af3e.chunk.js.map"
+    "main.css": "/dark-cloud/static/css/main.91e451b5.css",
+    "main.js": "/dark-cloud/static/js/main.41e6121e.js",
+    "static/js/787.ce35af3e.chunk.js": "/dark-cloud/static/js/787.ce35af3e.chunk.js",
+    "static/media/cloud.jpg": "/dark-cloud/static/media/cloud.d3343ac1800d61e61f16.jpg",
+    "index.html": "/dark-cloud/index.html",
+    "main.91e451b5.css.map": "/dark-cloud/static/css/main.91e451b5.css.map",
+    "main.41e6121e.js.map": "/dark-cloud/static/js/main.41e6121e.js.map",
+    "787.ce35af3e.chunk.js.map": "/dark-cloud/static/js/787.ce35af3e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7a752b62.css",
-    "static/js/main.1572fd82.js"
+    "static/css/main.91e451b5.css",
+    "static/js/main.41e6121e.js"
   ]
 }
