@@ -4,10 +4,7 @@ import Header from './components/Header';
 import Card from './components/Card'
 import axios from 'axios';
 import Forecast from './components/Forecast'
-
-
-
-//`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`
+import { Loader } from 'semantic-ui-react';
 
 function App() {
 
@@ -35,7 +32,7 @@ function App() {
     
     axios.get(`${URL}?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&appid=${apiKey}&units=metric`).then((weatherData) => {
       console.log(weatherData.data);
-      //setloading(false)
+      setloading(false)
       setTemperature(weatherData.data.current.temp);
       setSunset(weatherData.data.current.sunset)
       setSunrise(weatherData.data.current.sunrise)
@@ -54,19 +51,27 @@ function App() {
       <p className="welcome-text">
       Welcome to the Weather App! Turn on your location to get the weather and plan your day accordingly.
       </p>
-      
-      <div class="shadow-lg p-3 mb-5 bg-white rounded container">
-        <Card 
-          temperature={temperature}
-          humidity={humidity}
-          sunrise={sunrise}
-          sunset={sunset}
-          city={city}
-          icon={icon}        
-        />
-      </div>
+
+      {loading? (
+        <div>
+          <p>Loading... Pls wait</p>
+          <Loader active inline="centered" />
+          </div>
+      ): (
+        <div class="shadow-lg p-3 mb-5 bg-white rounded container">
+          <Card 
+            temperature={temperature}
+            humidity={humidity}
+            sunrise={sunrise}
+            sunset={sunset}
+            city={city}
+            icon={icon}        
+          />
+        </div>
+      )}
       <Forecast forecast={forecast}/>
-      </div>        
+      </div>
+              
     </div>
   );
 }
